@@ -1,43 +1,52 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
-  <head>
+<head>
     <meta charset="utf-8">
     <title>Table Contents</title>
-  </head>
-  <body>
-    <form action="/search_by_diarrhea_no" method="post">
-        <input type="text" name="diarrhea_no" placeholder="Enter Diarrhea No">
+</head>
+<body>
+    <form action="/search" method="post">
+        <label for="column">Select Column:</label>
+        <select name="column" id="column">
+            <option value="Diarrhea_no">Diarrhea_no</option>
+            <option value="Buyer">Buyer</option>
+            <option value="Seller">Seller</option>
+            <option value="Other_information">Other_information</option>
+            
+        </select>
+        <br>
+        <label for="search_value">Enter Value:</label>
+        <input type="text" name="search_value" id="search_value" placeholder="Enter a value" required>
+        <br>
         <input type="submit" value="Search">
     </form>
-
+<!-- for data showing turns into result to show that we added setup of table containing result data in the form of rows and columns -->
     {% if data %}
-      <h2>Search Results for Diarrhea No: {{ diarrhea_no }}</h2>
-      <table border="1">
+    <h2>Search Results</h2>
+    <table border="1">
         <tr>
-          <th>Diarrhea_no</th>
-          <th>Diarrhea_type</th>
-          <th>Du_Prohibit_Office</th>
-          <th>Year</th>
-          <th>Buyer</th>
-          <th>Seller</th>
-          <th>Other_information</th>
-          <th>List2_links</th>
-                  
+            <th>Diarrhea_no</th>
+            <th>Diarrhea_type</th>
+            <th>Du_Prohibit_Office</th>
+            <th>Year</th>
+            <th>Buyer</th>
+            <th>Seller</th>
+            <th>Other_information</th>
+            <th>List2_links</th>
         </tr>
         {% for row in data %}
         <tr>
-          <td>{{ row[0] }}</td>
-          <td>{{ row[1] }}</td>
-          <td>{{ row[2] }}</td>
-          <td>{{ row[3] }}</td>
-          <td>{{ row[4] }}</td>
-          <td>{{ row[5] }}</td>
-          <td>{{ row[6] }}</td>
-          <td>{{ row[7] }}</td>
-          <!-- Add more columns if needed -->
+            <td>{{ row[0] }}</td>
+            <td>{{ row[1] }}</td>
+            <td>{{ row[2] }}</td>
+            <td>{{ row[3] }}</td>
+            <td>{{ row[4] }}</td>
+            <td>{{ row[5] }}</td>
+            <td>{{ row[6] }}</td>
+            <td>{{ row[7] }}</td>
         </tr>
         {% endfor %}
-      </table>
+    </table>
     {% endif %}
-  </body>
+</body>
 </html>
